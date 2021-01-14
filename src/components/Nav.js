@@ -14,7 +14,7 @@ const styles = {
 
 const Nav = (props) => {
   return (
-    <div style={{border: '1px solid'}}>
+    <nav style={{border: '1px solid'}}>
       <h1 style={{border: '1px solid', width: 'fit-content', display: 'inline-block'}}>BARE</h1>
       <ul style={{border: '1px solid', float: 'right', width: 265, }}>
         <li style={styles.li.css}>
@@ -27,7 +27,7 @@ const Nav = (props) => {
           <a href="/contact">contact</a>
         </li>
       </ul>
-    </div>
+    </nav>
   )
 }
 
