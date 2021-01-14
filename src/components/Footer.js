@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = (props) => {
   return (
-    <div>FOOTER</div>
+    <div style={{height: props.height, border: '1px solid'}}>FOOTER</div>
   )
 }
 

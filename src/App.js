@@ -5,12 +5,14 @@ import Nav from './components/Nav'
 import Main from './components/Main'
 import Footer from './components/Footer'
 
+
+
 const App = (props) => {
   return (
     <div>
-      <Nav />
-      <Main />
-      <Footer />
+      <Nav height={100} />
+      <Main height={400} />
+      <Footer height={100} />
     </div>
   )
 }
