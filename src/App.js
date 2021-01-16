@@ -13,9 +13,11 @@ const App = (props) => {
       fontFamily: 'coolvetica, sans-serif',
       fontWeight: 400,
       fontStyle: 'normal',
+      color: 'white',
+      backgroundColor: 'black',
     }}>
       <Nav height={100} />
-      <Main height={400} />
+      <Main height={350} />
       <Footer height={100} />
     </div>
   )
