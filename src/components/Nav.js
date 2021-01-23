@@ -4,7 +4,7 @@ const styles = {
   li: {
     a: {
       css: {
-        color: 'white',
+        color: 'black',
         textDecoration: 'none',
       }
     },
@@ -23,7 +23,7 @@ const Nav = (props) => {
       paddingBottom: 15,
       padding: '20px 40px'
     }}>
-      <img src="bare_logo.png" />
+      <img src={'bare_logo_blk_200.png'} width={100}/>
       <ul style={{
         float: 'right',
         marginTop: 0,

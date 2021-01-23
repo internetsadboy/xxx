@@ -4,7 +4,7 @@ const styles = {
   div: {
     a: {
       css: {
-        color: 'white',
+        color: 'black',
         fontSize: 40,
         letterSpacing: 1,
         height: 'inherit',
