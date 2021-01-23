@@ -28,8 +28,7 @@ const styles = {
   div: {
   },
   img: {
-    height: 200,
-    border: '4px solid white',
+    height: 250,
     margin: 20
   }
 }

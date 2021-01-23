@@ -34,17 +34,17 @@ const Main = (props) => {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         }}></div>
-      <div style={{textAlign: 'center', margin: 60, marginTop: 90}}>
+      <div style={{textAlign: 'center', margin: 50, marginTop: 90}}>
         <h1 style={styles.class.description}>All natty deo.</h1>
         <h1 style={styles.class.description}>Refillable.</h1>
         <h1 style={styles.class.description}>Vegan.</h1>
         <h1 style={styles.class.description}>Works.</h1>
 
       </div>
-      <div style={{height: 450, marginBottom: 5}}>
+      <div style={{height: 'fit-content', marginBottom: 45}}>
         <ProductDetails />
       </div>
-      <div style={{height: props.height}}>
+      <div style={{height: 'fit-content', marginBottom: 70}}>
         <EmailForm />
       </div>
     </main>
