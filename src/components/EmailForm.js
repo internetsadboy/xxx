@@ -48,7 +48,7 @@ const styles = {
       background: 'white',
       color: 'black',
       font: 'inherit',
-      boxShadow: '0 6px 10px 0 rgba(0, 0, 0 , .1)',
+      boxShadow: '0 6px 11px 0px rgba(0, 0, 0 , .12)',
       border: 0,
       outline: 0,
       padding: 18,

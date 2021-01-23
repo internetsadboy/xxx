@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const styles = {
   li: {
@@ -6,14 +6,37 @@ const styles = {
       css: {
         color: 'black',
         textDecoration: 'none',
+        padding: '4px 12px',
+      },
+      hover: {
+        css: {
+          color: 'black',
+          borderBottom: '1px solid black',
+        }
       }
     },
     css: {
       listStyle: 'none',
       float: 'left',
-      padding: '10px 12px',
+
     }
   }
+}
+
+const Link = (props) => {
+ const [hover, setHover] = useState(false)
+ const style = hover
+  ? Object.assign({}, styles.li.a.css, styles.li.a.hover.css)
+  : styles.li.a.css
+ return (
+   <a
+     style={style}
+     href={props.href}
+     onMouseEnter={() => setHover(true)}
+     onMouseLeave={() => setHover(false)}>
+       {props.text}
+   </a>
+ )
 }
 
 const Nav = (props) => {
@@ -26,17 +49,17 @@ const Nav = (props) => {
       <img src={'bare_logo_blk_200.png'} width={100}/>
       <ul style={{
         float: 'right',
-        marginTop: 0,
+        marginTop: 11,
         marginRight: -15,
       }}>
         <li style={styles.li.css}>
-          <a style={styles.li.a.css} href="/about">about</a>
+          <Link text={'about'} href={'/about'} />
         </li>
         <li style={styles.li.css}>
-          <a style={styles.li.a.css} href="https://kickstarter.com">kickstarter</a>
+          <Link text={'kickstarter'} href={'https://kickstarter.com'} />
         </li>
         <li style={styles.li.css}>
-          <a style={styles.li.a.css} href="/contact">contact</a>
+          <Link text={'contact'} href={'/contact'} />
         </li>
       </ul>
     </nav>
