@@ -1,4 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {useForm} from 'react-hook-form'
+
+const REGEX = {
+  EMAIL: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+}
 
 const styles = {
   form: {
@@ -30,21 +35,23 @@ const styles = {
           fontSize: 18,
           padding: 18,
           transition: 'all 200ms ease-in',
-          width: 336,
+          width: '-webkit-fill-available',
         }
       },
       css: {}
     },
     css: {
-      border: '0px solid red',
+      width: 336,
+      margin: '0 auto',
     }
   },
   class: {
     formField: {
-      margin: '20px 0',
+      margin: '20px auto',
+      // width: 'inherit',
     },
     textField: {
-      width: 300,
+      width: '-webkit-fill-available',
       background: 'white',
       color: 'black',
       font: 'inherit',
@@ -54,29 +61,99 @@ const styles = {
       padding: 18,
       letterSpacing: 2,
       fontWeight: 300,
-      fontSize: 18,
+      fontSize: 18
+    },
+    errorBox: {
+      backgroundColor: '#f91b1b73',
+      padding: 10,
+      borderRadius: 4,
+      fontFamily: 'helvetica',
+      fontWeight: 200,
+      color: 'darkred',
+    },
+    confirmation: {
+      p: {
+        css: {
+          margin: 0,
+          marginTop: 15,
+        }
+      },
+      css: {
+        fontSize: 30,
+        fontWeight: 200,
+        letterSpacing: 2,
+        marginTop: 50,
+      }
     }
   }
+}
 
+const Form = (props) => {
+  return (
+    <form
+      onSubmit={props.handleSubmit(props.onSubmit)}
+      style={styles.form.css}
+    >
+      <div style={styles.class.formField}>
+        <input
+          style={styles.class.textField}
+          type="text"
+          name="name"
+          placeholder="Full name"
+          ref={props.register({required: true, maxLength: 20})}/>
+          {
+            props.errors.name && <p style={styles.class.errorBox}>{props.errors.name && "Full name is required"}</p>
+          }
+      </div>
+      <div style={styles.class.formField}>
+        <input
+          style={styles.class.textField}
+          type="text"
+          name="email"
+          placeholder="Email"
+          ref={props.register({required: true, pattern: REGEX.EMAIL})}
+        />
+        {
+          props.errors.email && <p style={styles.class.errorBox}>{props.errors.email && "A valid email is required"}</p>
+        }
+      </div>
+      <div style={styles.class.formField}>
+        <button
+          style={styles.form.div3.button.css}
+          type="submit">
+            Submit
+        </button>
+      </div>
+    </form>
+  )
 }
 
 const EmailForm = (props) => {
+  const [submit, setSubmit] = useState(false);
+  const { register, handleSubmit, errors } = useForm()
+  const onSubmit = (data) => {
+    console.log(data)
+    setSubmit(true)
+  }
+
   return (
     <section style={{textAlign: 'center'}}>
-      <form style={styles.form.css}>
-        <div style={styles.form.div.css}>
-          <p style={styles.form.div.p.css}>Get notified when we go live on Kickstarter!</p>
+      <div style={styles.form.div.css}>
+        <p style={styles.form.div.p.css}>Get notified when we go live on Kickstarter!</p>
+      </div>
+      {
+        !submit ?
+        <Form
+          register={register}
+          handleSubmit={handleSubmit}
+          errors={errors}
+          onSubmit={onSubmit}
+        /> :
+        <div style={styles.class.confirmation.css}>
+          <p style={styles.class.confirmation.p.css}>{'Thanks for being a part of Bare\'s journey!'}</p>
+          <p style={styles.class.confirmation.p.css}>{'We\'ll keep you updated.'}</p>
         </div>
-        <div style={styles.class.formField}>
-          <input style={styles.class.textField} type="text" name="name" placeholder="Full name" />
-        </div>
-        <div style={styles.class.formField}>
-          <input style={styles.class.textField} type="text" name="email" placeholder="Email" />
-        </div>
-        <div>
-          <button style={styles.form.div3.button.css} type="submit" className="btn btn--primary btn--inside uppercase">Submit</button>
-        </div>
-      </form>
+      }
     </section>
   )
 }

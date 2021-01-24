@@ -6,7 +6,8 @@ const styles = {
       css: {
         color: 'black',
         textDecoration: 'none',
-        padding: '4px 12px',
+        padding: '4px 8px',
+        letterSpacing: 1,
       },
       hover: {
         css: {
@@ -18,7 +19,7 @@ const styles = {
     css: {
       listStyle: 'none',
       float: 'left',
-
+      padding: '0 10px'
     }
   }
 }
